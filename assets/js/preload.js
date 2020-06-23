@@ -14,6 +14,20 @@ function preloadImages(arr) {
 
 preloadImages([
   "../images/Background1.png",
+  "../images/Background2.png",
+  "../images/Background3.png",
   "../images/enterButton.png",
-  "../images/Welcome.png"
+  "../images/volON.png",
+  "../images/volOFF.png",
+  "../images/Welcome.png",
+  "../images/Demon Hunter.png",
+  "../images/Druid.png",
+  "../images/Hunter.png",
+  "../images/Mage.png",
+  "../images/Paladin.png",
+  "../images/Priest.png",
+  "../images/Rogue.png",
+  "../images/Shaman.png",
+  "../images/Warlock.png",
+  "../images/Warrior.png"
 ]);
