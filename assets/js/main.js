@@ -1,3 +1,8 @@
+const sound = new Sound();
+const options = new Options();
+const app = new App(sound, options);
+app.initializeApp();
+
 const hearthstone = {
   "async": true,
   "crossDomain": true,
