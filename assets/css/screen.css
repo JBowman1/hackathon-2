@@ -1,0 +1,154 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.welcomeScreen{
+  height: 100vh;
+  width: 100vw;
+  min-width: 1000px;
+  min-height: 625px;
+  background-image: url('../images/Welcome.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: none;
+  position: absolute;
+}
+
+.enterButton{
+  position: relative;
+  top: 75%;
+  left: 42%;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px black;
+  transition: transform .5s ease;
+}
+
+.enterButton:hover{
+  box-shadow: 0px 0px 15px #4bd1fd;
+  transform: scale(1.1);
+}
+
+.enterButton:active{
+  transform: scale(1.0);
+}
+
+.optionScreen{
+  height: 100vh;
+  width: 100vw;
+  min-width: 1000px;
+  min-height: 625px;
+  background-image: url('../images/Background2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: none;
+  position: absolute;
+}
+
+.buttons{
+  display: block;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  left: 39%;
+  top: 37%;
+}
+
+.options{
+  display: block;
+  width: 300px;
+  height: 50px;
+  margin-bottom: 14px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+.volButton{
+  width: 66.75px;
+  height: 33.75px;
+  position: absolute;
+  left: 48%;
+  top: 90%;
+  background-image: url('../images/volON.png');
+  background-size: cover;
+  border-radius: 13px;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 5px black;
+  transition: transform .5s ease;
+  cursor: pointer;
+}
+
+.volButton:hover{
+  box-shadow: 0px 0px 15px #4bd1fd;
+  transform: scale(1.1);
+}
+
+.volButton:active{
+  transform: scale(.9);
+  border: none;
+}
+
+.characterSelect{
+  height: 100vh;
+  width: 100vw;
+  min-width: 1440px;
+  min-height: 810px;
+  background-image: url('../images/Background3.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: none;
+  position: absolute;
+}
+
+.characters{
+  margin-left: 12rem;
+  margin-top: 12rem;
+  display: block;
+  position: relative;
+}
+
+.row {
+  margin-bottom: 1rem;
+}
+
+.heroButton{
+  width: 17%;
+  background-color:transparent;
+  border:none;
+  outline: none;
+  height: auto;
+}
+
+.hero{
+  width: 95%;
+  height: auto;
+}
+
+.backButton1{
+  display: block;
+  width: 150px;
+  height: 75px;
+  margin-bottom: 14px;
+  position: relative;
+  top: 72px;
+  left: 72px;
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+.hidden{
+  display: none;
+}

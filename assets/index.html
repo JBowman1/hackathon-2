@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon-2</title>
+  <link rel="stylesheet" href="css/screen.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div id="screens" class="screens">
+
+    <div id="welcomeScreen" class="welcomeScreen hidden">
+      <img src = "images/enterButton.png" alt ="Enter Button" class = "enterButton" id="enterButton">
+    </div>
+
+    <div id="optionScreen" class="optionScreen hidden">
+      <div id = "buttons" class = "buttons">
+        <button id = "buildDeckButton" class="options"></button>
+        <button id = "popularDeckButton" class="options"></button>
+        <button id = "allCardsButton" class="options"></button>
+        <button id = "creditsButton" class="options"></button>
+      </div>
+      <input type = "button" id = "volButton" class = "volButton">
+    </div>
+
+    <div id="characterSelect" class="characterSelect hidden">
+      <div class = "characters">
+        <div class = "row">
+          <button class="heroButton"><img src="../assets/images/Warrior.png" alt="Warrior" class="hero bob-on-hover"></button>
+          <button class="heroButton"><img src="../assets/images/Shaman.png" alt="Shaman" class="hero bob-on-hover"></button>
+          <button class="heroButton"><img src="../assets/images/Rogue.png" alt="Rogue" class="hero bob-on-hover"></button>
+          <button class="heroButton"><img src="../assets/images/Paladin.png" alt="Paladin" class="hero bob-on-hover"></button>
+          <button class="heroButton"><img src="../assets/images/Hunter.png" alt="Hunter" class="hero bob-on-hover"></button>
+        </div>
+        <div class = "row">
+          <button class="heroButton"><img src="../assets/images/Druid.png" alt="Druid" class="hero bob-on-hover"></button>
+          <button class="heroButton"><img src="../assets/images/Warlock.png" alt="Warlock" class="hero bob-on-hover"></button>
+          <button class="heroButton"><img src="../assets/images/Mage.png" alt="Mage" class="hero bob-on-hover"></button>
+          <button class="heroButton"><img src="../assets/images/Priest.png" alt="Priest" class="hero bob-on-hover"></button>
+          <button class="heroButton"><img src="../assets/images/Demon Hunter.png" alt="Hunter" class="hero bob-on-hover"></button>
+        </div>
+      </div>
+      <input type = "button" id="backButton1" class = "backButton1">
+    </div>
+
+    <div id="deckBuilderScreen" class="hidden">
+
+    </div>
+
+    <div id="popularDeckScreen" class="hidden">
+
+    </div>
+
+    <div id="allCardsScreen" class="hidden">
+
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
