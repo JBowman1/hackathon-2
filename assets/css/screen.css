@@ -149,6 +149,55 @@
   outline:none;
 }
 
+.deckBuilderScreen{
+  height: 100vh;
+  width: 100vw;
+  min-width: 1440px;
+  min-height: 810px;
+  background-image: url('../images/Background4.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: none;
+  position: absolute;
+}
+
+.backButton2 {
+  display: block;
+  width: 125px;
+  height: 45px;
+  position: absolute;
+  bottom: 8px;
+  right: 125px;
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+.deckBuilderMain{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.cardContainer{
+  flex: 45%;
+  height: 70%;
+  margin-top: 10rem;
+  margin-left: 20rem;
+  margin-right: 8rem;
+}
+
+.deckContainer{
+  flex: 6%;
+  height: 82%;
+  margin-top: 6rem;
+  margin-right: 11rem;
+}
+
 .hidden{
   display: none;
 }
