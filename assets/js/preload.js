@@ -1,3 +1,5 @@
+var allCardsContainer = document.getElementById('allCardsContainer');
+
 function preloadImages(arr) {
   if (!preloadImages.list) preloadImages.list = [];
   const list = preloadImages.list;
@@ -32,17 +34,17 @@ preloadImages([
   "images/Rogue.png",
   "images/Shaman.png",
   "images/Warlock.png",
-  "images/Warrior.png"
+  "images/Warrior.png",
+  "images/loading.png",
+  "images/spinner.gif"
 ]);
-
-var allCardsContainer = document.getElementById('allCardsContainer');
 
 function handleData(responseData) {
   var names = [];
   for (var set in responseData) {
     if (set == "Basic" || set == "Classic") {
       for (let i = 0; i < responseData[set].length; i++) {
-        if (responseData[set][i]['img'] !== undefined && responseData[set][i]['type'] !== "Hero Power" && responseData[set][i]['type'] !== "Hero"){
+        if (responseData[set][i]['img'] !== undefined && responseData[set][i]['type'] !== "Hero Power" && responseData[set][i]['type'] !== "Hero" && responseData[set][i]['name'] !== "Skeleton"){
           names.push({
             name: responseData[set][i]['name'],
             img: responseData[set][i]['img']
@@ -87,6 +89,10 @@ function getCardData() {
     .then(resp => resp.json())
     .then(function (data) {
       handleData(data);
+    })
+    .then(function(){
+      var loadingSpinner = document.getElementById('loading');
+      loadingSpinner.setAttribute('class','hidden');
     })
     .catch(function (error) {
       console.log(error);
