@@ -241,6 +241,23 @@
   position: absolute;
 }
 
+.allCardsContainer{
+  width: 70%;
+  height: 90%;
+  margin-top: 5rem;
+  margin-left: 16rem;
+}
+
+.newCardContainer{
+  display: inline;
+}
+
+.card{
+  height: 30%;
+  width:auto;
+  filter: drop-shadow(0px 0px 5px black);
+}
+
 .hidden{
   display: none;
 }

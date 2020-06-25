@@ -35,13 +35,14 @@ preloadImages([
   "images/Warrior.png"
 ]);
 
+var allCardsContainer = document.getElementById('allCardsContainer');
 
 function handleData(responseData) {
   var names = [];
   for (var set in responseData) {
     if (set == "Basic" || set == "Classic") {
-      for (var i = 0; i < responseData[set].length; i++) {
-        if (responseData[set][i]['img'] !== undefined && responseData[set][i]['type'] !== "Hero Power" && responseData[set][i]['type'] !== "Hero") {
+      for (let i = 0; i < responseData[set].length; i++) {
+        if (responseData[set][i]['img'] !== undefined && responseData[set][i]['type'] !== "Hero Power" && responseData[set][i]['type'] !== "Hero"){
           names.push({
             name: responseData[set][i]['name'],
             img: responseData[set][i]['img']
@@ -51,7 +52,23 @@ function handleData(responseData) {
     }
   }
   let unique = [...new Set(names)];
-  console.log(unique);
+  displayCards(unique);
+}
+
+function displayCards(cardDeck){
+  for(let j = 0; j < cardDeck.length; j++){
+    let div = document.createElement('div');
+    let cardImage = document.createElement('img');
+    cardImage.id = cardDeck[j].name;
+    cardImage.setAttribute('src', cardDeck[j].img);
+    cardImage.setAttribute('class', 'card');
+    div.setAttribute('class', 'newCardContainer');
+    div.append(cardImage);
+    allCardsContainer.append(div);
+    $("img").on('error', function () {
+      $(this).attr("class", "hidden");
+    });
+  }
 }
 
 function getCardData() {
@@ -78,4 +95,4 @@ function getCardData() {
 
 $(document).ready(function () {
   getCardData()
-})
+});
