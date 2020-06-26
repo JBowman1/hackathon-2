@@ -1,5 +1,5 @@
 class PopularDecks{
-  constructor( builder){
+  constructor(){
     //this.sound;
     this.builder;
 
@@ -8,7 +8,7 @@ class PopularDecks{
     this.backButton2 = document.getElementById('backButton3');
   }
 
-  addEventListeners3(){
+  addEventListeners(){
     this.backButton2.addEventListener('click', this.returnToMain3());
   }
 

@@ -1,7 +1,7 @@
 class Builder{
-  constructor(sound){
-    this.sound = sound;
+  constructor(){
     this.title = null;
+    this.deck = [];
 
     this.optionScreen = document.getElementById('optionScreen');
     this.characterSelectScreen = document.getElementById('characterSelect');
@@ -20,35 +20,39 @@ class Builder{
     this.mage = document.getElementById('mageButton');
     this.priest = document.getElementById('priestButton');
     this.demonHunter = document.getElementById('demonHunterButton');
-    this.backButton1 = document.getElementById('backButton1');
+    this.backButton2 = document.getElementById('backButton2');
+    this.loadingSpinner = document.getElementById('loading');
 
     this.getCardData =  this.getCardData.bind(this);
-    this.handleData = this.getCardData.bind(this);
+    this.handleData = this.handleData.bind(this);
     this.displayCards = this.displayCards.bind(this);
-    this.addToDeck = this.addToDeck.bind(this);
+    this.chooseYourCharacter = this.chooseYourCharacter.bind(this);
+    this.switch = this.switch.bind(this);
+    this.returnToMain = this.returnToMain.bind(this);
   }
 
-  addEventListeners() {
-    this.warrior.addEventListener('click', this.switchView);
-    this.shaman.addEventListener('click', this.switchView);
-    this.rogue.addEventListener('click', this.switchView);
-    this.paladin.addEventListener('click', this.switchView);
-    this.hunter.addEventListener('click', this.switchView);
-    this.druid.addEventListener('click', this.switchView);
-    this.warlock.addEventListener('click', this.switchView);
-    this.mage.addEventListener('click', this.switchView);
-    this.priest.addEventListener('click', this.switchView);
-    this.demonHunter.addEventListener('click', this.switchView);
-    this.backButton1.addEventListener('click', this.returnToMain2);
+  chooseYourCharacter() {
+    this.warrior.addEventListener('click', this.switch);
+    this.shaman.addEventListener('click', this.switch);
+    this.rogue.addEventListener('click', this.switch);
+    this.paladin.addEventListener('click', this.switch);
+    this.hunter.addEventListener('click', this.switch);
+    this.druid.addEventListener('click', this.switch);
+    this.warlock.addEventListener('click', this.switch);
+    this.mage.addEventListener('click', this.switch);
+    this.priest.addEventListener('click', this.switch);
+    this.demonHunter.addEventListener('click', this.switch);
+    this.backButton2.addEventListener('click', this.returnToMain);
   }
 
-  switchView(e){
+  switch(e){
     var element = e.target;
     this.title = element.getAttribute('data-title');
     this.characterSelectScreen.classList.add('hidden');
     this.deckBuilderScreen.classList.remove('hidden');
+    this.loadingSpinner.classList.remove('hidden');
     this.getCardData();
-    return this.title;
+    console.log(this.title);
   }
 
   getCardData() {
@@ -65,22 +69,21 @@ class Builder{
         }
       })
       .then(resp => resp.json())
-      .then(function (data) {
+      .then (data => {
         this.handleData(data);
       })
-      .then(function () {
-        var loadingSpinner = document.getElementById('loading');
-        loadingSpinner.setAttribute('class', 'hidden');
+      .then(()=>{
+        this.loadingSpinner.classList.add('hidden');
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(error => {
+        console.error(error);
       });
   }
 
   handleData(responseData) {
     const names = [];
     for (const set in responseData) {
-      if (set == "Basic" || set == "Classic") {
+      if (set === "Basic" || set === "Classic") {
         for (let i = 0; i < responseData[set].length; i++) {
           if (responseData[set][i]['img'] !== undefined && responseData[set][i]['type'] !== "Hero Power" && responseData[set][i]['type'] !== "Hero" && responseData[set][i]['name'] !== "Skeleton") {
             names.push({
@@ -92,22 +95,29 @@ class Builder{
         }
       }
     }
-    let unique = [...new Set(names)];
+    const unique = [...new Set(names)];
     this.displayCards(unique);
   }
 
   displayCards(cardDeck) {
     for (let j = 0; j < cardDeck.length; j++) {
       if(cardDeck[j].playerClass === this.title || cardDeck[j].playerClass === "Neutral"){
-      let div = document.createElement('div');
-      let cardImage = document.createElement('img');
+      const div = document.createElement('div');
+      const cardImage = document.createElement('img');
       cardImage.id = cardDeck[j].name;
       cardImage.setAttribute('src', cardDeck[j].img);
       cardImage.setAttribute('class', 'card');
       div.setAttribute('class', 'newCardContainer');
       div.append(cardImage);
       this.cardContainer.append(div);
-      cardImage.addEventListener('click', this.addToDeck);
+      cardImage.addEventListener('click', ()=>{
+        if (this.deck.length < 30) {
+          this.deck.push(cardImage.id);
+          const span = document.createElement('span');
+          span.textContent = cardImage.id;
+          this.deckContainer.append(span);
+        }
+      });
       $("img").on('error', function () {
         $(this).attr("class", "hidden");
       });
@@ -115,17 +125,12 @@ class Builder{
   }
 }
 
-  addToDeck(){
-    const deck = [];
-    if (deck.length < 30){
-    deck.push(this.cardImage.id);
-    let span = document.createElement('span');
-    span.textContent = this.cardImage.id;
-    this.deckContainer.append(span);
-    }
-  }
-
   returnToMain(){
+    this.deck = [];
+    this.title = null;
+    this.cardContainer.innerHTML = "";
+    this.deckContainer.innerHTML = "";
+    this.loadingSpinner.classList.add('hidden');
     this.deckBuilderScreen.classList.add('hidden');
     this.optionScreen.classList.remove('hidden');
   }

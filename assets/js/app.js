@@ -1,7 +1,7 @@
 class App {
-  constructor(sound, builder, popularDecks, allCards){
+  constructor(builder, allCards){
     this.builder = builder;
-    this.popularDecks = popularDecks;
+    //this.popularDecks = popularDecks;
     this.allCards = allCards;
     this.title = null;
 
@@ -17,6 +17,7 @@ class App {
     this.popularDeckButton = document.getElementById('popularDeckButton');
     this.allCardsButton = document.getElementById('allCardsButton');
     this.creditsButton = document.getElementById('creditsButton');
+    this.loadingSpinner = document.getElementById('loading');
 
     this.addEventListeners = this.addEventListeners.bind(this);
     this.switchView = this.switchView.bind(this);
@@ -24,6 +25,7 @@ class App {
 
   initializeApp(){
     this.addEventListeners();
+    this.builder.chooseYourCharacter();
   }
 
   addEventListeners() {
@@ -38,7 +40,6 @@ class App {
   switchView(e){
     let element = e.target;
     this.title = element.getAttribute('data-title');
-
     switch(this.title){
       case "enter":
         this.welcomeScreen.classList.add('hidden');
@@ -55,6 +56,9 @@ class App {
       case "allCards":
         this.optionScreen.classList.add('hidden');
         this.allCardsScreen.classList.remove('hidden');
+        this.allCards.getCardData();
+        this.allCards.initialize();
+        this.allCards.addButtonFunction();
         break;
       case "credits":
         this.optionScreen.classList.add('hidden');
