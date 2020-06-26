@@ -10,46 +10,49 @@
 </head>
 
 <body>
+  <div id="music" class="music">
+    <audio src="audio/Music.mp3" type="audio/mp3" preload="auto" loop id="appMusic"></audio>
+  </div>
 
-  <div id="loading">
+  <div id="loading" class="hidden">
     <img id="loading-image" class="loading-image" src="../assets/images/spinner.gif" alt="Loading..." />
     <img id="loading-text" class="loading-text" src="../assets/images/loading.png" alt="Loading..."/>
   </div>
 
   <div id="screens" class="screens">
-
-    <div id="welcomeScreen" class="welcomeScreen hidden">
-      <img src = "images/enterButton.png" alt ="Enter Button" class = "enterButton" id="enterButton">
+    <div id="welcomeScreen" class="welcomeScreen">
+      <img src = "images/enterButton.png" alt ="Enter Button" class = "enterButton" id="enterButton" data-title="enter">
     </div>
 
     <div id="optionScreen" class="optionScreen hidden">
       <div id = "buttons" class = "buttons">
-        <button id = "buildDeckButton" class="options"></button>
-        <button id = "popularDeckButton" class="options"></button>
-        <button id = "allCardsButton" class="options"></button>
-        <button id = "creditsButton" class="options"></button>
+        <button id = "buildDeckButton" class="options" data-title="buildDeck"></button>
+        <button id = "popularDeckButton" class="options" data-title="popularDeck"></button>
+        <button id = "allCardsButton" class="options" data-title="allCards"></button>
+        <button id = "creditsButton" class="options" data-title="credits"></button>
       </div>
-      <input type = "button" id = "volButton" class = "volButton">
+      <input type = "button" id = "toggleMusic" class = "volButton">
     </div>
 
     <div id="characterSelect" class="characterSelect hidden">
       <div class = "characters">
         <div class = "row">
-          <button class="heroButton"><img src="../assets/images/Warrior.png" alt="Warrior" class="hero bob-on-hover"></button>
-          <button class="heroButton"><img src="../assets/images/Shaman.png" alt="Shaman" class="hero bob-on-hover"></button>
-          <button class="heroButton"><img src="../assets/images/Rogue.png" alt="Rogue" class="hero bob-on-hover"></button>
-          <button class="heroButton"><img src="../assets/images/Paladin.png" alt="Paladin" class="hero bob-on-hover"></button>
-          <button class="heroButton"><img src="../assets/images/Hunter.png" alt="Hunter" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="warriorButton" data-title="Warrior"><img src="../assets/images/Warrior.png" alt="Warrior" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="shamanButton" data-title="Shaman"><img src="../assets/images/Shaman.png" alt="Shaman" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="rogueButton" data-title="Rogue"><img src="../assets/images/Rogue.png" alt="Rogue" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="paladinButton" data-title="Paladin"><img src="../assets/images/Paladin.png" alt="Paladin" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="hunterButton" data-title="Hunter"><img src="../assets/images/Hunter.png" alt="Hunter" class="hero bob-on-hover"></button>
         </div>
         <div class = "row">
-          <button class="heroButton"><img src="../assets/images/Druid.png" alt="Druid" class="hero bob-on-hover"></button>
-          <button class="heroButton"><img src="../assets/images/Warlock.png" alt="Warlock" class="hero bob-on-hover"></button>
-          <button class="heroButton"><img src="../assets/images/Mage.png" alt="Mage" class="hero bob-on-hover"></button>
-          <button class="heroButton"><img src="../assets/images/Priest.png" alt="Priest" class="hero bob-on-hover"></button>
-          <button class="heroButton"><img src="../assets/images/Demon Hunter.png" alt="Hunter" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="druidButton" data-title="Druid"><img src="../assets/images/Druid.png" alt="Druid" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="warlockButton" data-title="Warlock"><img src="../assets/images/Warlock.png" alt="Warlock" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="mageButton" data-title="Mage"><img src="../assets/images/Mage.png" alt="Mage" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="priestButton" data-title="Priest"><img src="../assets/images/Priest.png" alt="Priest" class="hero bob-on-hover"></button>
+          <button class="heroButton" id="demonHunterButton" data-title="DemonHunter"><img src="../assets/images/Demon Hunter.png" alt="Hunter" class="hero bob-on-hover"></button>
         </div>
       </div>
       <input type = "button" id="backButton1" class = "backButton1">
+      <!-- <span class = "playAs" id="playAs">Chosen Character: </span> -->
     </div>
 
     <div id="deckBuilderScreen" class="deckBuilderScreen hidden">
@@ -67,22 +70,21 @@
       <button id="backButton3" class="backButton3"></button>
     </div>
 
-    <div id="allCardsScreen" class="allCardsScreen">
+    <div id="allCardsScreen" class="allCardsScreen hidden">
       <div class="allCardsContainer" id="allCardsContainer">
 
       </div>
       <button id="backButton4" class="backButton4"></button>
     </div>
-
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script type="text/javascript" src="js/preload.js"></script>
-  <!-- <script type="text/javascript" src="js/sounds.js"></script>
-  <script type="text/javascript" src="js/options.js"></script>
+  <!-- <script type="text/javascript" src="js/sound.js"></script> -->
   <script type="text/javascript" src="js/builder.js"></script>
-  <script type="text/javascript" src="js/app.js"></script> -->
-  <!-- <script type="text/javascript" src="js/main.js"></script> -->
+  <script type="text/javascript" src="js/popular-decks.js"></script>
+  <script type="text/javascript" src="js/all-cards.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 
 </html>

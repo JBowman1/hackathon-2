@@ -133,6 +133,14 @@
   height: auto;
 }
 
+.playAs{
+  position: absolute;
+  bottom: 7.5%;
+  left: 39%;
+  color: white;
+  font-size: 25px;
+}
+
 .backButton1{
   display: block;
   width: 150px;
