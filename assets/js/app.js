@@ -1,73 +1,69 @@
 class App {
-  constructor(sound, options){
-    this.sound = sound;
-    this.options = options;
+  constructor(builder, allCards){
+    this.builder = builder;
+    //this.popularDecks = popularDecks;
+    this.allCards = allCards;
+    this.title = null;
 
     this.welcomeScreen = document.getElementById('welcomeScreen');
-    this.enterButton = document.getElementById('enterButton');
     this.optionScreen = document.getElementById('optionScreen');
-    this.optionButton = document.getElementById('optionButton');
-    this.characterSelect = document.getElementById('characterSelect');
-    this.characterButton = document.getElementById('characterButton');
+    this.characterSelectScreen = document.getElementById('characterSelect');
     this.deckBuilderScreen = document.getElementById('deckBuilderScreen');
     this.popularDeckScreen = document.getElementById('popularDeckScreen');
     this.allCardsScreen = document.getElementById('allCardsScreen');
 
-    this.welcomeView = {
-      view: this.welcomeScreen,
-      button: null,
-      sound: () => sound.playSound(sound.select)
-    };
+    this.enterButton = document.getElementById('enterButton');
+    this.buildDeckButton = document.getElementById('buildDeckButton');
+    this.popularDeckButton = document.getElementById('popularDeckButton');
+    this.allCardsButton = document.getElementById('allCardsButton');
+    this.creditsButton = document.getElementById('creditsButton');
+    this.loadingSpinner = document.getElementById('loading');
 
-    this.optionView = {
-      view: this.optionScreen,
-      button: this.optionButton,
-      sound: () => sound.playSound(sound.select)
-    };
-
-    this.characterView = {
-      view: this.characterSelect,
-      button: this.characterButton,
-      sound: () => sound.playSound(sound.select, sound.name)
-    };
-
-    this.deckBuilderView = {
-      view: this.deckBuilderScreen,
-      button: this.cardButton,
-      sound: () => sound.playSound(sound.cardSelect)
-    };
-
-    this.popularDeckView = {
-      view: this.popularDeckScreen,
-      button: this.deckButton,
-      sound: () => sound.playSound(sound.select)
-    };
-
-    this.allCardsView = {
-      view: this.allCardsScreen,
-      button: null,
-      sound: null
-    };
-
-    this.views = [this.welcomeView, this.optionView, this.characterView, this.deckBuilderView, this.popularDeckView, this.allCardsView];
-    this.index = 0;
+    this.addEventListeners = this.addEventListeners.bind(this);
+    this.switchView = this.switchView.bind(this);
   }
 
-  initializeApp() {
-    this.sound.addEventListeners();
-    this.options.initializeOptions();
+  initializeApp(){
     this.addEventListeners();
+    this.builder.chooseYourCharacter();
   }
 
   addEventListeners() {
     this.enterButton.addEventListener('click', this.switchView);
-    this.optionButton.addEventListener('click', this.switchView);
-    this.characterButton.addEventListener('click', this.switchView);
+    this.characterSelectScreen.addEventListener('click', this.switchView);
+    this.buildDeckButton.addEventListener('click', this.switchView);
+    this.popularDeckButton.addEventListener('click', this.switchView);
+    this.allCardsButton.addEventListener('click', this.switchView);
+    this.creditsButton.addEventListener('click', this.switchView);
   }
 
-  switchView(){
-
+  switchView(e){
+    let element = e.target;
+    this.title = element.getAttribute('data-title');
+    switch(this.title){
+      case "enter":
+        this.welcomeScreen.classList.add('hidden');
+        this.optionScreen.classList.remove('hidden');
+        break;
+      case "buildDeck":
+        this.optionScreen.classList.add('hidden');
+        this.characterSelectScreen.classList.remove('hidden');
+        break;
+      case "popularDeck":
+        this.optionScreen.classList.add('hidden');
+        this.popularDeckScreen.classList.remove('hidden');
+        break;
+      case "allCards":
+        this.optionScreen.classList.add('hidden');
+        this.allCardsScreen.classList.remove('hidden');
+        this.allCards.getCardData();
+        this.allCards.initialize();
+        this.allCards.addButtonFunction();
+        break;
+      case "credits":
+        this.optionScreen.classList.add('hidden');
+        this.creditsScreen.classList.add('hidden');
+        break;
+    }
   }
-
-  
 }

@@ -1,5 +1,5 @@
-// const sound = new Sound();
-// const options = new Options();
-// const app = new App(sound, options);
-// app.initializeApp();
-
+const builder = new Builder();
+//const popularDecks = new PopularDecks();
+const allCards = new AllCards();
+const app = new App(builder, allCards);
+app.initializeApp();
