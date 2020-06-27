@@ -25,7 +25,6 @@ class App {
 
   initializeApp(){
     this.addEventListeners();
-    this.builder.chooseYourCharacter();
   }
 
   addEventListeners() {
@@ -48,6 +47,7 @@ class App {
       case "buildDeck":
         this.optionScreen.classList.add('hidden');
         this.characterSelectScreen.classList.remove('hidden');
+        this.builder.chooseYourCharacter();
         break;
       case "popularDeck":
         this.optionScreen.classList.add('hidden');
